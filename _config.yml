@@ -34,19 +34,20 @@ url: 'https://impulsado.github.io'
 
 github:
   username: impulsado             # change to your github username
-
-twitter:
-  username: twitter_username            # change to your twitter username
+instagram:
+  username: impulsado             # change to your instagram username
+twitch:
+  username: impulsado             # change to your twitch username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: impulsado
-  email: impulsado@protonmail.com             # change to your email address
+  # email: example@domain.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://instagram.com/impulsado      # change to your instagram homepage
+    # - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
