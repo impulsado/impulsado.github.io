@@ -12,11 +12,11 @@ This is my documentation for my homeLab project.
 
 ## Overview
 ### Hardware
-| Name | Link | Price |
-|:---|:---|---:|
-| Raspberry Pi | [Link](https://www.raspberrypi.com/products/raspberry-pi-400/) | 80€ |
-| 32 GB MicroSD | [Link](https://www.amazon.es/Gigastone-gs-2in1600-tarjeta-memoria-adaptador/dp/B01N7DE9VG/ref=sr_1_3_sspa?keywords=32gb+micro+sd&qid=1661711836&sprefix=32gb+mi%2Caps%2C133&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyMFRQMFY0VTVZT1JFJmVuY3J5cHRlZElkPUEwMjAwNzk0VjlTN0lYWVBZWDBCJmVuY3J5cHRlZEFkSWQ9QTAzMzA1NDkxVklRV1JPQkg0MUFNJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==) | 12€ |
-| 1 TB HDD | [Link](https://www.amazon.es/WD-Elements-Disco-Externo-port%C3%A1til/dp/B06VVS7S94/ref=sr_1_omk_6?keywords=disco+duro+1tb&qid=1661715026&sr=8-6)| 50€ |
+| Name              | Price     |
+|-------------------|-----------|
+| Raspberry Pi      | 80€       |
+| 32 GB MicroSD     | 12€       |
+| 1 TB HDD          | 50€       |
 
 
 ### Services
@@ -75,7 +75,7 @@ Docker packages software into standardized units called containers that include 
 > More information [link](https://docs.docker.com/get-docker/).
 
 1. Execute the following commands:
-<br/>
+
 ```bash
 # Update the system
 sudo apt update -y && sudo apt upgrade -y
@@ -92,6 +92,7 @@ sudo usermod -aG docker pi
 # Install Portainer
 sudo docker run -d -p 9000:9000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
+
 <br/>
 
 2. Once installed, open your web browser and navigate to the Protainer Dashboard. 
