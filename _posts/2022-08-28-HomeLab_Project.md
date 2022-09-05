@@ -31,6 +31,7 @@ Since these steps are fairly simple, I will give a short summary of my process b
 ![Photo](/assets/img/Photos/Snipaste_2022-08-31_18-52-14.png)
 
 2. Now executhe the following commands:
+
 ```bash
 # Update the system
 sudo apt update -y && sudo apt upgrade -y
