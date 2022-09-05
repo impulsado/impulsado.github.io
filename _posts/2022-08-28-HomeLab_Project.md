@@ -24,6 +24,30 @@ Since these steps are fairly simple, I will give a short summary of my process b
 
 <br/>
 
+# Install and Configure PiVPN
+[Explanation]
+
+1. First we will need a new subdomain Record on our Cloudfare DNS pointing to our Home Public IP.
+![Photo](/assets/img/Photos/Snipaste_2022-08-31_18-52-14.png)
+
+2. Now executhe the following commands:
+```bash
+# Update the system
+sudo apt update -y && sudo apt upgrade -y
+
+# Install PiVPN
+curl -L https://install.pivpn.io | bash
+```
+
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_13-03-04.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_13-05-27.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_13-06-22.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_13-07-43.png)
+
+
+3. Now copy the file to the device we want to use it.
+> You can use [WinSCP](https://winscp.net/eng/download.php) to copy files.
+
 # Install and Configure AdGuard Home
 AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it'll cover ALL your home devices, and you don't need any client-side software for that.
 It operates as a DNS server that re-routes tracking domains to a “black hole”, thus preventing your devices from connecting to those servers. It's based on software we use for our public AdGuard DNS servers, and both share a lot of code.
@@ -93,37 +117,23 @@ Navigate to Environment > local. In Public IP, write down Raspberry Pi IP.
 ## Install and Configure WireGuard
 [Explanation]
 
-1. First we will need a new subdomain Record on our Cloudfare DNS pointing to our Home Public IP.
-![Photo](/assets/img/Photos/Snipaste_2022-08-31_18-52-14.png)
 
-2. Because the installation of these services can be done in many different ways, this time I have thought it convenient to do it with a single command.
 
+2. Go to this Github repository and execute the following commands:
 ```bash
-docker run -d \
-  --name=wg-easy \
-  -e WG_HOST=vpn.impulsado.org\
-  -e PASSWORD=Password \
-  -v /home/pi/Programs/WireGuard:/etc/wireguard \
-  -p 51820:51820/udp \
-  -p 51821:51821/tcp \
-  --cap-add=NET_ADMIN \
-  --cap-add=SYS_MODULE \
-  --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
-  --sysctl="net.ipv4.ip_forward=1" \
-  --restart unless-stopped \
-  weejewel/wg-easy
+# Get the script and change permissions
+curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+chmod +x openvpn-install.sh
+
+# Run the script
+./openvpn-install.sh
 ```
-> TCP port is set for accessing to Admin Control Panel.
 
-3. Now acces to the Admin Control Panel and create a new user. (IP:51821)
-![Photo](/assets/img/Photos/Snipaste_2022-08-31_19-07-11.png)
+3. After executing the script, it will ask some questions about the configuration we want to have. I will show you what you must change:
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_12-12-51.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-05_12-15-18.png)
 
-4. Download the file or scan the QR Code and send it to your device.
-> Remeber that this file doesn't have password. Do not share it.
 
-5. Finally, access your router's control panel and create a new "Port Forwarding" rule that redirects all traffic to the Raspberry Pi that has a destination port of 51820/udp.
-> Each company is different, so I recommend that you look it up on the internet.
-![Photo](/assets/img/Photos/Snipaste_2022-08-31_19-13-58.png)
 
 <br/>
 
