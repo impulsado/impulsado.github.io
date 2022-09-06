@@ -28,6 +28,7 @@ Since these steps are fairly simple, I will give a short summary of my process b
 PiVPN is a free and open-source software suite that sets up a VPN server using OpenVPN server software. It has been designed specifically to run on a low-cost Raspberry Pi.
 
 1. Now executhe the following commands:
+
 ```bash
 # Update the system
 sudo apt update -y && sudo apt upgrade -y
@@ -50,6 +51,7 @@ sudo pivpn -a
 # Change permissions to the directory
 sudo chown -R pi:pi ~/configs
 ```
+
 ![Photo](/assets/img/Photos/Snipaste_2022-09-06_09-29-35.png)
 
 3. To make this work, we need to create a new Port Forwading rule in our Router:
