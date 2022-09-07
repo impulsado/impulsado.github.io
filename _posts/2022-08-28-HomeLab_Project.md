@@ -149,7 +149,89 @@ Dynamic DNS (DDNS) is a service that keeps the DNS updated with a web property's
 <br/>
 
 ## Install and Configure NGINX Reverse Proxy
-[TO DO]
+The Nginx proxy manager (NPM) is a reverse proxy management system running on Docker. NPM is based on an Nginx server and provides users with a clean, efficient, and beautiful web interface for easier management. The tool is easy to set up and does not require users to know how to work with Nginx servers or SSL certificates.
+> More information [Link](https://nginxproxymanager.com/)
+
+1. Create the directory and a yaml file inside with this content:
+
+```yaml
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+```
+
+2. After creating this file, bring up the stack.
+
+```bash
+sudo docker-compose up -d
+```
+
+3. Login into Admin UI (IP:81) and end the configuration.
+```
+Email:    admin@example.com
+Password: changeme
+```
+
+<br/>
+
+## Install and Configure Vaultwarden
+[Explanation]
+
+> More information [Link](https://github.com/dani-garcia/vaultwarden)
+
+1. Create the directory and a yaml file inside with this content:
+
+```yaml
+version: '3'
+
+services:
+  vaultwarden:
+    restart: unless-stopped
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    volumes:
+      - ./vw-data/:/data/
+    ports:
+      - 8062:80
+    environment:
+      - LOGIN_RATELIMIT_MAX_BURST=10
+      - LOGIN_RATELIMIT_SECONDS=60
+      - DOMAIN=https://pass.impulsado.org           # CHANGE THIS
+      - ADMIN_TOKEN=P@ssword                        # CHANGE THIS
+      - SIGNUPS_ALLOWED=false
+      - SIGNUPS_DOMAINS_WHITELIST=example.com       # CHANGE THIS
+      - SIGNUPS_VERIFY=true
+      - SIGNUPS_VERIFY_RESEND_TIME=3600
+      - SIGNUPS_VERIFY_RESEND_LIMIT=6
+      - EMERGENCY_ACCESS_ALLOWED=true
+      - SENDS_ALLOWED=true
+      - WEB_VAULT_ENABLED=true
+```
+
+2. After installing it, access to portainer and add the Vaultwarden container to the NGINX network.
+![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-14-25.png)
+
+3. Now access to NGINX dashboard and create a new Certificate to the Vaultwarden container. Navigate to: SSL certificate > "Add SSL certificate"
+![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-21-47.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-16-42.png)
+
+4. Now add a new "Proxy Host".
+
+![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-50-15.png)
+![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-50-36.png)
+
+5. Finally, access to the website and create an account. Remember that the email domain must be one of the previously authorized ones. (e.g. example.com = mail@example.com).
+
+6. If you want to configure Vaultwarden more extensively, you can go to "pass.domain.com/admin".
 
 <br/>
 

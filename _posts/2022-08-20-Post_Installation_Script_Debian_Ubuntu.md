@@ -229,7 +229,7 @@ function nvimInstall() {
     apt install -y neovim > /dev/null
     if [ ! -d /home/$username/.config/nvim ]; then
     mkdir -p /home/$username/.config/nvim
-    cat <<EOF /home/$username/.config/nvim/init.vim
+    cat <<EOF >> /home/$username/.config/nvim/init.vim
 syntax on                   " syntax highlighting
 syntax on                   " syntax highlighting
 set hidden                  " Required to keep multiple buffers open
@@ -266,9 +266,12 @@ fi
 function printEnd() {
     clear
     echo ""
+    echo ""
+    echo ""
     echo " 1. EXECUTE THIS COMMAND:  source ~/.bashrc"
     echo ""
     echo " 2. README:   cat /home/$username/README.md"
+    echo ""
     echo ""
     cat <<EOF >> /home/$username/README.md
 # !! IMPORTANT !!
