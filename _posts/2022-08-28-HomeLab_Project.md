@@ -1,4 +1,5 @@
 ---
+pin: true
 layout: post
 title: homeLab Project Documentation
 date: 2022-08-27
@@ -184,9 +185,11 @@ Password: changeme
 <br/>
 
 ## Install and Configure Vaultwarden
-[Explanation]
+Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a command-line interface.
 
 > More information [Link](https://github.com/dani-garcia/vaultwarden)
+
+0. Create 2 Forwarding rules in your router (HTTP & HTTPS).
 
 1. Create the directory and a yaml file inside with this content:
 
