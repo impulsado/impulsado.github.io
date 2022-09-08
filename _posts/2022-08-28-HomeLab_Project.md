@@ -238,6 +238,37 @@ services:
 
 <br/>
 
+## Install and Configure Samba
+[Explanation]
+
+1. Mount the external storage. 
+```bash
+# List all disks and search for the onw you want to mount.
+sudo fdisk -l
+
+# Create the folder where the disk will be mounted.
+sudo mkdir /mnt/<name-of-the-drive>
+
+# Edit /etc/fstab
+UUID=<uuid-of-your-drive>  <mount-point>  <file-system-type>  <mount-option>  <dump>  <pass>
+
+## EXAMPLE
+UUID=0792EAD8-DE83-4D3B-A031-DE16CF8AF399 /mnt/sda1 ext4 defaults 0 1
+
+# Save the config and close the file.
+sudo mount -a
+```
+
+2. Open Portainer and search for Samba template.
+
+3. Configure Samba template like this:
+![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-19-11.png)
+
+4. Wait a little bit and try to connect to Samba:
+![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-20-08.png)
+
+<br/>
+
 ## Sources
 - **Pi-Hosted Project:** https://github.com/novaspirit/pi-hosted
 - **Self-Hostred Docker setups:** https://github.com/abhilesh/self-hosted_docker_setups
