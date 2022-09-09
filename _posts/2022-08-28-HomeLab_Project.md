@@ -18,16 +18,16 @@ If there is any doubt or error in the documentation, do not hesitate to contact 
 
 ## Table of Contents
 1. [Initial Configuration](https://notes.impulsado.org/posts/HomeLab_Project/#initial-configuration)
-2. [PiVPN]()
-3. [AdGuard Home]()
-4. [Docker + Portainer]()
-5. [Cloudflare DDNS]()
-6. [NGINX Reverse Proxy]()
-7. [Vaultwarden]()
-8. [Samba]()
-9. [Dashy]()
-10. [Further Investigations]()
-11. [Sources]()
+2. [PiVPN](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-pivpn)
+3. [AdGuard Home](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-adguard-home)
+4. [Docker + Portainer](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-docker--portainer)
+5. [Cloudflare DDNS](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-cloudfare-ddns)
+6. [NGINX Reverse Proxy](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-nginx-reverse-proxy)
+7. [Vaultwarden](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-vaultwarden)
+8. [Samba](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-samba)
+9. [Dashy](https://notes.impulsado.org/posts/HomeLab_Project/#install-and-configure-dashy)
+10. [Further Investigations](https://notes.impulsado.org/posts/HomeLab_Project/#further-investigations)
+11. [Sources](https://notes.impulsado.org/posts/HomeLab_Project/#sources)
 
 <br/>
 
@@ -291,7 +291,7 @@ A self-hostable personal dashboard built for you. Includes status-checking, widg
 > More information [Link](https://github.com/Lissy93/dashy)
 
 
-1. Create the folder where you will creat the configuration file and create the `conf.yml`.
+1.. Create the folder where you will creat the configuration file and create the `conf.yml`.
 
 ```yaml
 ---
@@ -342,7 +342,7 @@ sections:
         url: http://192.168.1.1/homeAuthentication.html---
 ```
 
-2. Go to Portainer and create a new stack.
+2.. Go to Portainer and create a new stack.
 
 ```yaml
 ---
@@ -364,7 +364,7 @@ services:
 
 ![Photo](/assets/img/Photos/Snipaste_2022-09-09_09-34-03.png)
 
-3. Now you can access to the Dashboard (IP:4000)
+3.. Now you can access to the Dashboard (IP:4000)
 
 <br/>
 
