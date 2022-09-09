@@ -7,13 +7,27 @@ categories: [HomeLab]
 tags: [docker,raspberry_pi]
 ---
 # homeLab Project Documentation
-This is my documentation for my homeLab project.
+This is my documentation for the "homeLab" project. Here you will be able to configure your Raspberry Pi to be a server of very useful services in the day to day like for example: Samba, Bitwarden...
+
+If there is any doubt or error in the documentation, do not hesitate to contact me: [Instagram](https://www.instagram.com/impulsado)
+
+
+![Photo](/assets/img/Photos/Snipaste_2022-09-09_10-54-10.png)
 
 <br/>
 
-## Further Investigations
-- [ ] NFTables Firewall
-- [ ] SSL Certificates
+## Table of Contents
+1. [Initial Configuration](https://notes.impulsado.org/posts/HomeLab_Project/#initial-configuration)
+2. [PiVPN]()
+3. [AdGuard Home]()
+4. [Docker + Portainer]()
+5. [Cloudflare DDNS]()
+6. [NGINX Reverse Proxy]()
+7. [Vaultwarden]()
+8. [Samba]()
+9. [Dashy]()
+10. [Further Investigations]()
+11. [Sources]()
 
 <br/>
 
@@ -25,7 +39,7 @@ Since these steps are fairly simple, I will give a short summary of my process b
 
 <br/>
 
-# Install and Configure PiVPN
+## Install and Configure PiVPN
 PiVPN is a free and open-source software suite that sets up a VPN server using OpenVPN server software. It has been designed specifically to run on a low-cost Raspberry Pi.
 
 1. Now executhe the following commands:
@@ -239,9 +253,11 @@ services:
 <br/>
 
 ## Install and Configure Samba
-[Explanation]
+Samba is an open-source software suite that runs on Unix/Linux based platforms but is able to communicate with Windows clients like a native application. So Samba is able to provide this service by employing the Common Internet File System (CIFS).
+> More information [Link](https://www.samba.org/)
 
 1. Mount the external storage. 
+
 ```bash
 # List all disks and search for the onw you want to mount.
 sudo fdisk -l
@@ -265,10 +281,100 @@ sudo mount -a
 ![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-19-11.png)
 
 4. Wait a little bit and try to connect to Samba:
+<br/>
 ![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-20-08.png)
+
+<br/>
+
+## Install and Configure Dashy
+A self-hostable personal dashboard built for you. Includes status-checking, widgets, themes, icon packs, a UI editor.
+> More information [Link](https://github.com/Lissy93/dashy)
+
+
+1. Create the folder where you will creat the configuration file and create the `conf.yml`.
+
+```yaml
+---
+pageInfo:
+  title: Hello, impulsado
+  description: Dashboard
+  logo: https://avatars.githubusercontent.com/u/72570835?v=4
+appConfig:
+  statusCheck: false
+  theme: dashy-docs
+  fontAwesomeKey: c94dc2b452
+  customCss: '.clock p.time { font-size: 3rem !important; }'
+  layout: vertical
+  iconSize: medium
+  language: es
+sections:
+  - name: Today
+    icon: far fa-smile-beam
+    displayData:
+      collapsed: false
+      hideForGuests: false
+    widgets:
+      - type: clock
+        id: 0_513_clock
+  - name: Selfhosted
+    icon: far fa-code
+    items:
+      - title: AdGuard
+        icon: si-adguard
+        url: http://192.168.1.81:3000/
+      - title: Nginx Reverse Proxy
+        icon: si-nginx
+        url: http://192.168.1.81:81/
+      - title: Portainer
+        icon: si-portainer
+        url: http://192.168.1.81:9000/
+      - title: Vaultwarden
+        icon: si-bitwarden
+        url: https://pass.impulsado.org
+      - title: Cloudflare
+        icon: si-cloudflare
+        url: https://www.cloudflare.com/
+      - title: wannaNotes
+        icon: si-github
+        url: https://www.notes.impulsado.org/
+      - title: Router
+        icon: si-pfsense
+        url: http://192.168.1.1/homeAuthentication.html---
+```
+
+2. Go to Portainer and create a new stack.
+
+```yaml
+---
+version: "2.1"
+services:
+  dashy:
+    image: lissy93/dashy
+    container_name: Dashy
+    volumes:
+      - /home/pi/Programs/Dashy/conf.yml:/app/public/conf.yml
+    ports:
+      - 4000:80
+    environment:
+      - NODE_ENV=production
+      - UID=1001
+      - GID=100
+    restart: unless-stopped
+```
+
+![Photo](/assets/img/Photos/Snipaste_2022-09-09_09-34-03.png)
+
+3. Now you can access to the Dashboard (IP:4000)
+
+<br/>
+
+## Further Investigations
+- [ ] SSL Certificates
+- [ ] Backups
 
 <br/>
 
 ## Sources
 - **Pi-Hosted Project:** https://github.com/novaspirit/pi-hosted
-- **Self-Hostred Docker setups:** https://github.com/abhilesh/self-hosted_docker_setups
+- **Self-Hosted Docker setups:** https://github.com/abhilesh/self-hosted_docker_setups
+- **Selfhosted Reddit:** https://www.reddit.com/r/selfhosted/
