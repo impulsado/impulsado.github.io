@@ -33,16 +33,16 @@ If there is any doubt or error in the documentation, do not hesitate to contact 
 
 ## Initial configuration
 Since these steps are fairly simple, I will give a short summary of my process before installing anything:
-1. [Install](https://youtu.be/y45hsd2AOpw) O.S. to the Raspberry Pi.
-2. Execute my [Post Installation Script](https://notes.impulsado.org/posts/Post_Installation_Script_Debian_Ubuntu/)
-3. Assign static IP address to the Raspberry in your Router.
+1.. [Install](https://youtu.be/y45hsd2AOpw) O.S. to the Raspberry Pi.
+2.. Execute my [Post Installation Script](https://notes.impulsado.org/posts/Post_Installation_Script_Debian_Ubuntu/)
+3.- Assign static IP address to the Raspberry in your Router.
 
 <br/>
 
 ## Install and Configure PiVPN
 PiVPN is a free and open-source software suite that sets up a VPN server using OpenVPN server software. It has been designed specifically to run on a low-cost Raspberry Pi.
 
-1. Now executhe the following commands:
+1.. Now executhe the following commands:
 
 ```bash
 # Update the system
@@ -56,7 +56,7 @@ curl -L https://install.pivpn.io | bash
 ![Photo](/assets/img/Photos/Snipaste_2022-09-05_13-05-27.png)
 
 
-2. Create a new user and copy the file to the device we want to use it.
+2.. Create a new user and copy the file to the device we want to use it.
 > You can use [WinSCP](https://winscp.net/eng/download.php) to copy files.
 
 ```bash
@@ -69,7 +69,7 @@ sudo chown -R pi:pi ~/configs
 
 ![Photo](/assets/img/Photos/Snipaste_2022-09-06_09-29-35.png)
 
-3. To make this work, we need to create a new Port Forwading rule in our Router:
+3.. To make this work, we need to create a new Port Forwading rule in our Router:
 ![Photo](/assets/img/Photos/Snipaste_2022-09-06_09-56-22.png)
 
 <br/>
@@ -79,23 +79,23 @@ AdGuard Home is a network-wide software for blocking ads & tracking. After you s
 It operates as a DNS server that re-routes tracking domains to a “black hole”, thus preventing your devices from connecting to those servers. It's based on software we use for our public AdGuard DNS servers, and both share a lot of code.
 
 
-1. Execute the following command to install AdGuard Home:
+1.. Execute the following command to install AdGuard Home:
 
 ```bash
 curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
 ```
 
-2. Navigate to AdGuard Home Administrator Dashboard and finish the setup. (IP:3000)
+2.. Navigate to AdGuard Home Administrator Dashboard and finish the setup. (IP:3000)
 ![Photo](/assets/img/Photos/Snipaste_2022-08-29_21-04-38.png)
 
-3. Now it's time to configure AdGuard Home. First, we will setup our device and test that AdGuard is working properly.
+3.. Now it's time to configure AdGuard Home. First, we will setup our device and test that AdGuard is working properly.
 To configure your device, navigate to "Setup Guide" in the Header.
 ![Photo](/assets/img/Photos/Snipaste_2022-08-29_21-17-02.png)
 
-4. Once we have checked that, at least, one device is working properly, we will add more blocklists to the filter. Navigate to: Filters > DNS Blocklists > Add Blocklists > Choose from the list.
+4.. Once we have checked that, at least, one device is working properly, we will add more blocklists to the filter. Navigate to: Filters > DNS Blocklists > Add Blocklists > Choose from the list.
 ![Photo](/assets/img/Photos/Snipaste_2022-08-31_18-40-23.png)
 
-5. Select all the options and click Save.
+5.. Select all the options and click Save.
 
 > If you want more domains, you can visit this [web](https://firebog.net/) and copy those URLs into your Blocklists filter.
 
@@ -107,7 +107,7 @@ Most of this project is based on a program called [Docker](https://www.docker.co
 Docker packages software into standardized units called containers that include everything needed for the software to run, including libraries, system tools, code and runtime.
 > More information [link](https://docs.docker.com/get-docker/).
 
-1. Execute the following commands:
+1.. Execute the following commands:
 
 ```bash
 # Update the system
@@ -126,15 +126,15 @@ sudo usermod -aG docker pi
 sudo docker run -d -p 9000:9000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
-2. Once installed, open your web browser and navigate to the Protainer Dashboard. 
+2.. Once installed, open your web browser and navigate to the Protainer Dashboard. 
 To do that, you will need to write down the IP:Port. In out case, port is mapped to 9000.
 ![Photo](/assets/img/Photos/Snipaste_2022-08-28_22-13-53.png)
 
-3. Before installing anything else, let's change the templates shown in "App Templates".
+3.. Before installing anything else, let's change the templates shown in "App Templates".
 To do that, you will need to change the URL to https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/template/portainer-v2-arm64.json
 ![Photo](/assets/img/Photos/Snipaste_2022-08-28_22-23-28.png)
 
-4. Finally, let's configure the IP to which the shortcuts will open to point to the raspberry pi (192.168.1.81) and not to its local one (127.0.0.1).
+4.. Finally, let's configure the IP to which the shortcuts will open to point to the raspberry pi (192.168.1.81) and not to its local one (127.0.0.1).
 Navigate to Environment > local. In Public IP, write down Raspberry Pi IP.
 ![Photo](/assets/img/Photos/Snipaste_2022-08-29_07-05-41.png)
 
@@ -144,17 +144,17 @@ Navigate to Environment > local. In Public IP, write down Raspberry Pi IP.
 Dynamic DNS (DDNS) is a service that keeps the DNS updated with a web property's correct IP address, even if that IP address is constantly being updated.
 > More information [Link](https://www.cloudflare.com/learning/dns/glossary/dynamic-dns/)
 
-1. Open Cloudfare dashboard and create a new API Token. [Link](https://dash.cloudflare.com/profile/api-tokens)
+1.. Open Cloudfare dashboard and create a new API Token. [Link](https://dash.cloudflare.com/profile/api-tokens)
 
-2. Create a new Token > Create Custom Token.
+2.. Create a new Token > Create Custom Token.
 
 ![Photo](/assets/img/Photos/Snipaste_2022-09-06_11-14-15.png)
 
-3. From the Templates list, select Cloudfare DDNS and configure it:
+3.. From the Templates list, select Cloudfare DDNS and configure it:
 
 ![Photo](/assets/img/Photos/Snipaste_2022-09-06_11-20-00.png)
 
-4. Finally, check in Cloudfare that we can see our "local" entry pointing to our Public IP.
+4.. Finally, check in Cloudfare that we can see our "local" entry pointing to our Public IP.
 
 > We must change the option to DNS Only because we will use NGINX in the future.
 
@@ -167,7 +167,7 @@ Dynamic DNS (DDNS) is a service that keeps the DNS updated with a web property's
 The Nginx proxy manager (NPM) is a reverse proxy management system running on Docker. NPM is based on an Nginx server and provides users with a clean, efficient, and beautiful web interface for easier management. The tool is easy to set up and does not require users to know how to work with Nginx servers or SSL certificates.
 > More information [Link](https://nginxproxymanager.com/)
 
-1. Create the directory and a yaml file inside with this content:
+1.. Create the directory and a yaml file inside with this content:
 
 ```yaml
 version: '3'
@@ -184,13 +184,13 @@ services:
       - ./letsencrypt:/etc/letsencrypt
 ```
 
-2. After creating this file, bring up the stack.
+2.. After creating this file, bring up the stack.
 
 ```bash
 sudo docker-compose up -d
 ```
 
-3. Login into Admin UI (IP:81) and end the configuration.
+3.. Login into Admin UI (IP:81) and end the configuration.
 ```
 Email:    admin@example.com
 Password: changeme
@@ -203,9 +203,9 @@ Bitwarden is a free and open-source password management service that stores sens
 
 > More information [Link](https://github.com/dani-garcia/vaultwarden)
 
-0. Create 2 Forwarding rules in your router (HTTP & HTTPS).
+0.. Create 2 Forwarding rules in your router (HTTP & HTTPS).
 
-1. Create the directory and a yaml file inside with this content:
+1.. Create the directory and a yaml file inside with this content:
 
 ```yaml
 version: '3'
@@ -234,21 +234,21 @@ services:
       - WEB_VAULT_ENABLED=true
 ```
 
-2. After installing it, access to portainer and add the Vaultwarden container to the NGINX network.
+2.. After installing it, access to portainer and add the Vaultwarden container to the NGINX network.
 ![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-14-25.png)
 
-3. Now access to NGINX dashboard and create a new Certificate to the Vaultwarden container. Navigate to: SSL certificate > "Add SSL certificate"
+3.. Now access to NGINX dashboard and create a new Certificate to the Vaultwarden container. Navigate to: SSL certificate > "Add SSL certificate"
 ![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-21-47.png)
 ![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-16-42.png)
 
-4. Now add a new "Proxy Host".
+4.. Now add a new "Proxy Host".
 
 ![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-50-15.png)
 ![Photo](/assets/img/Photos/Snipaste_2022-09-07_09-50-36.png)
 
-5. Finally, access to the website and create an account. Remember that the email domain must be one of the previously authorized ones. (e.g. example.com = mail@example.com).
+5.. Finally, access to the website and create an account. Remember that the email domain must be one of the previously authorized ones. (e.g. example.com = mail@example.com).
 
-6. If you want to configure Vaultwarden more extensively, you can go to "pass.domain.com/admin".
+6.. If you want to configure Vaultwarden more extensively, you can go to "pass.domain.com/admin".
 
 <br/>
 
@@ -256,7 +256,7 @@ services:
 Samba is an open-source software suite that runs on Unix/Linux based platforms but is able to communicate with Windows clients like a native application. So Samba is able to provide this service by employing the Common Internet File System (CIFS).
 > More information [Link](https://www.samba.org/)
 
-1. Mount the external storage. 
+1.. Mount the external storage. 
 
 ```bash
 # List all disks and search for the onw you want to mount.
@@ -275,12 +275,12 @@ UUID=0792EAD8-DE83-4D3B-A031-DE16CF8AF399 /mnt/sda1 ext4 defaults 0 1
 sudo mount -a
 ```
 
-2. Open Portainer and search for Samba template.
+2.. Open Portainer and search for Samba template.
 
-3. Configure Samba template like this:
+3.. Configure Samba template like this:
 ![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-19-11.png)
 
-4. Wait a little bit and try to connect to Samba:
+4.. Wait a little bit and try to connect to Samba:
 <br/>
 ![Photo](/assets/img/Photos/Snipaste_2022-09-08_09-20-08.png)
 
@@ -371,6 +371,7 @@ services:
 ## Further Investigations
 - [ ] SSL Certificates
 - [ ] Backups
+- [ ] Logging correctly
 
 <br/>
 
