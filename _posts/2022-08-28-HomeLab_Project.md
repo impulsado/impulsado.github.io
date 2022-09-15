@@ -371,7 +371,9 @@ services:
 ## Further Investigations
 - [ ] SSL Certificates
 - [ ] Backups
-- [ ] Logging correctly
+- [ ] Manage Logs
+- [ ] Fail2Ban
+
 
 <br/>
 
