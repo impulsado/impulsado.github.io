@@ -33,9 +33,9 @@ If there is any doubt or error in the documentation, do not hesitate to contact 
 
 ## Initial configuration
 Since these steps are fairly simple, I will give a short summary of my process before installing anything:
-1.. [Install](https://youtu.be/y45hsd2AOpw) O.S. to the Raspberry Pi.
-2.. Execute my [Post Installation Script](https://notes.impulsado.org/posts/Post_Installation_Script_Debian_Ubuntu/)
-3.- Assign static IP address to the Raspberry in your Router.
+1. [Install](https://youtu.be/y45hsd2AOpw) O.S. to the Raspberry Pi.
+2. Execute my [Post Installation Script](https://notes.impulsado.org/posts/Post_Installation_Script_Debian_Ubuntu/)
+3. Assign static IP address to the Raspberry in your Router.
 
 <br/>
 
