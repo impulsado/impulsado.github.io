@@ -40,7 +40,7 @@ You can also specify only the modules you want to use. For example, if you only 
 ## Result
 Here you can see a graph that shows, with which modules it has obtained more information from the target. Since we have specified a web page, most of the information has to do with the content of the web page and the HTTP Headers.
 
-![Photo](/assets/img/Photos/SpiderFoot-3.png)
+![Photo](/assets/img/Photos/Spiderfoot-3.png)
 
 
 ## Extra
