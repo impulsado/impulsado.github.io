@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBT Boxing - Apoya el Boxeo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Teko:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">TBT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#donar" class="btn-nav">DONAR</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>TBT</h1>
+            <p class="tagline">Txonda, Gràcia, 08023 Barcelona</p>
+            <div class="hero-subtitle">Txonda Boxing Tornament</div>
+            <a href="#donar" class="btn-hero">MANTÉN VIVO EL RING</a>
+        </div>
+    </header>
+
+    <!-- Sección de Donación -->
+    <section id="donar" class="donate-section">
+        <div class="container">
+            <h2>MANTÉN VIVO EL RING</h2>
+            
+            <div class="donation-options">
+                <div class="donation-card">
+                    <div class="amount">1€</div>
+                    <p class="donation-desc">Una venda nueva</p>
+                    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                        <input type="hidden" name="business" value="elpaubru@gmail.com">
+                        <input type="hidden" name="amount" value="1">
+                        <input type="hidden" name="currency_code" value="EUR">
+                        <input type="hidden" name="item_name" value="Donación TBT Boxing - 1€">
+                        <button type="submit" class="btn-donate">
+                            DONAR 1€
+                        </button>
+                    </form>
+                </div>
+
+                <div class="donation-card featured">
+                    <div class="popular-badge">MÁS COMÚN</div>
+                    <div class="amount">2€</div>
+                    <p class="donation-desc">Paga la luz 1 día</p>
+                    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                        <input type="hidden" name="business" value="elpaubru@gmail.com">
+                        <input type="hidden" name="amount" value="2">
+                        <input type="hidden" name="currency_code" value="EUR">
+                        <input type="hidden" name="item_name" value="Donación TBT Boxing - 2€">
+                        <button type="submit" class="btn-donate btn-featured">
+                            DONAR 2€
+                        </button>
+                    </form>
+                </div>
+
+                <div class="donation-card">
+                    <div class="amount">5€</div>
+                    <p class="donation-desc">Guantes de sparring</p>
+                    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                        <input type="hidden" name="business" value="elpaubru@gmail.com">
+                        <input type="hidden" name="amount" value="5">
+                        <input type="hidden" name="currency_code" value="EUR">
+                        <input type="hidden" name="item_name" value="Donación TBT Boxing - 5€">
+                        <button type="submit" class="btn-donate">
+                            DONAR 5€
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="payment-info">
+                <p>Pago seguro vía PayPal</p>
+                <p class="payment-methods">No necesitas cuenta PayPal para donar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">TBT</span>
+                    <span class="logo-sub">BOXING</span>
+                </div>
+                <p>&copy; 2026 TBT Boxing. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">X</a>
+                    <a href="#" class="social-icon">FB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
