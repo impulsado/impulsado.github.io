@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>rex</title>
+  <link rel="shortcut icon" href="img/star.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li id="about" class="nav-item underline">.\about</li>
+        <li id="projects" class="nav-item underline">./projects</li>
+      </ul>
+    </nav>
+    <main>
+      <h1>impulsado:~$ <span class="cursor">_</span></h1>
+      <table>
+        <tr>
+          <td>-rwxrw-rw-</td>
+          <td><a href="https://www.linkedin.com/in/paubruribes/" target="_blank" class="link underline"
+              style="color: #0e76a8;"><i class="fab fa-linkedin"></i> LinkedIn</a></td>
+        </tr>
+        <tr>
+          <td>-rwx---rw-</td>
+          <td><a href="https://www.youtube.com/@impulsado" target="_blank" class="link underline"
+              style="color: #c4302b;"><i class="fab fa-youtube"></i> YouTube</a></td>
+        </tr>
+        <tr>
+          <td>-rwxrwxr-x</td>
+          <td><a href="https://github.com/impulsado" target="_blank" class="link underline" style="color: #f0f0f0;"><i
+                class="fab fa-github"></i> GitHub</a></td>
+        </tr>
+      </table>
+    </main>
+  </div>
+
+  <!-- Window Contents -->
+  <div class="hidden">
+    <div id="about-content" class="powershell">
+      <div class="ps-header">Windows PowerShell</div>
+      <div class="ps-copyright">Copyright (C) Micronoft Corporation.</div>
+      <div class="ps-line">
+        <span class="ps-prompt">PS C:\Users\impulsado&gt;</span> <span class="ps-cmd">Get-Content .\about.txt</span>
+      </div>
+      <div class="ps-output">
+        <p>Name        : <span class="ps-value">impulsado</span></p>
+        <p>Location    : Barcelona, Spain</p>
+        <p>Education   : Computer Engineering @ UPC</p>
+        <p>Interests   : Networking, Cybersecurity</p>
+        <p>Philosophy  : Simplifying complexity</p>
+      </div>
+    </div>
+
+    <div id="projects-content" class="linux-term">
+      <div class="term-line">
+        <span class="term-user">impu@zeOS</span>:<span class="term-path">~</span>$ ls -la ~/projects
+      </div>
+      <div class="term-output">
+        <div class="ls-header">
+          <span>total 20K</span>
+        </div>
+
+      <div class="ls-row">
+        <a href="https://github.com/impulsado/zeOS" target="_blank">
+          <span class="perm">drwxr-xr-x</span>
+          <span class="user">impulsado</span>
+          <span class="size">4.0K</span>
+          <span class="name">zeOS/</span>
+        </a>
+      </div>
+      <div class="ls-files">
+        <div class="file-item"><i class="devicon-c-plain"></i> <span class="file-c">kernel.c</span></div>
+        <div class="file-item"><i class="fas fa-microchip"></i> <span class="file-asm">boot.asm</span></div>
+      </div>
+
+      <div class="ls-row">
+        <a href="https://github.com/impulsado/personalDB" target="_blank">
+          <span class="perm">drwxr-xr-x</span>
+          <span class="user">impulsado</span>
+          <span class="size">2.1K</span>
+          <span class="name">personalDB/</span>
+        </a>
+      </div>
+      <div class="ls-files">
+        <div class="file-item"><i class="devicon-flutter-plain"></i> <span class="file-dart">app.dart</span></div>
+      </div>
+
+      <div class="ls-row">
+        <a href="https://github.com/impulsado/wannaNotes" target="_blank">
+          <span class="perm">drwxr-xr-x</span>
+          <span class="user">impulsado</span>
+          <span class="size">856</span>
+          <span class="name">wannaNotes/</span>
+        </a>
+      </div>
+      <div class="ls-files">
+        <div class="file-item"><i class="fab fa-markdown"></i> <span class="file-md">notes.md</span></div>
+        <div class="file-item"><i class="devicon-docker-plain"></i> <span class="file-md">Containerlab</span></div>
+      </div>
+
+      <div class="ls-row">
+        <a href="https://github.com/impulsado/eternalFIB" target="_blank">
+          <span class="perm">drwxr-xr-x</span>
+          <span class="user">impulsado</span>
+          <span class="size">12K</span>
+          <span class="name">eternalFIB/</span>
+        </a>
+      </div>
+      <div class="ls-files">
+        <div class="file-item"><i class="devicon-c-original"></i> <span class="file-c">os.c</span></div>
+        <div class="file-item"><i class="devicon-cplusplus-plain"></i> <span class="file-cpp">data.cpp</span></div>
+        <div class="file-item"><i class="devicon-java-plain"></i> <span class="file-java">Main.java</span></div>
+        <div class="file-item"><i class="devicon-postgresql-plain"></i> <span class="file-sql">database.sql</span></div>
+        <div class="file-item"><i class="fas fa-microchip"></i> <span class="file-asm">sys.asm</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/winbox@0.2.82/dist/winbox.bundle.min.js"></script>
+  <script src="jss/main.js"></script>
+</body>
+
+</html>
