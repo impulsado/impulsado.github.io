@@ -2,38 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Contador animado de estadísticas
-    const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                element.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = target;
-            }
-        };
-        
-        updateCounter();
-    };
-    
-    // Observador para animar cuando sea visible
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.target.textContent === '0') {
-                animateCounter(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    document.querySelectorAll('.stat-number').forEach(counter => {
-        counterObserver.observe(counter);
-    });
+    // Inicializar Twitch y Video
+    initializeTwitchStream();
     
     // Smooth scroll para los links de navegación
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -48,66 +18,85 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Animación de las tarjetas de donación al hacer scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = entry.target.classList.contains('featured') 
-                    ? 'scale(1.05)' 
-                    : 'translateY(0)';
+    
+    // Navbar transparente al hacer scroll
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                navbar.style.background = 'transparent';
             }
         });
-    }, observerOptions);
-
-    // Aplicar animación inicial a las tarjetas
-    document.querySelectorAll('.donation-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.5s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
-
-    // Efecto parallax en el hero
-    window.addEventListener('scroll', function() {
-        const hero = document.querySelector('.hero');
-        const scrolled = window.pageYOffset;
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-        }
-    });
-
-    // Navbar con fondo al hacer scroll
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
-            navbar.style.position = 'fixed';
-            navbar.style.borderBottom = '2px solid #6f0000';
-        } else {
-            navbar.style.background = 'transparent';
-            navbar.style.backdropFilter = 'none';
-            navbar.style.position = 'absolute';
-            navbar.style.borderBottom = 'none';
-        }
-    });
-
-    // Efecto de hover en los botones de donación
-    document.querySelectorAll('.btn-donate').forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.boxShadow = '0 5px 0 #6f0000';
-        });
-        btn.addEventListener('mouseleave', function() {
-            this.style.boxShadow = 'none';
-        });
-    });
-
-    console.log('🥊 TBT Boxing - Cargado correctamente');
+    }
 });
+
+// Función para inicializar el stream de Twitch o wallpaper
+async function initializeTwitchStream() {
+    const twitchEmbed = document.getElementById('twitch-embed');
+    const heroBackground = document.getElementById('hero-background');
+    const channelName = 'impulsado';
+
+    // Verificar si el canal está en directo
+    async function checkIfLive() {
+        try {
+            const response = await fetch(`https://decapi.me/twitch/uptime/${channelName}`);
+            const data = await response.text();
+            
+            // Si el canal está offline, la API devuelve un mensaje de error
+            const isOffline = data.includes('offline') || data.includes('error');
+            
+            if (isOffline) {
+                // Canal offline - mostrar wallpaper
+                showBackground();
+            } else {
+                // Canal en directo - mostrar stream
+                showStream();
+            }
+        } catch (error) {
+            // En caso de error, mostrar el wallpaper por defecto
+            console.error('Error verificando estado del stream:', error);
+            showBackground();
+        }
+    }
+
+    // Mostrar wallpaper de fondo
+    function showBackground() {
+        if (heroBackground) {
+            heroBackground.style.display = 'block';
+        }
+        if (twitchEmbed) {
+            twitchEmbed.style.display = 'none';
+        }
+    }
+
+    // Mostrar stream de Twitch
+    function showStream() {
+        if (heroBackground) {
+            heroBackground.style.display = 'none';
+        }
+        if (twitchEmbed) {
+            twitchEmbed.style.display = 'block';
+            
+            // Inicializar embed de Twitch si existe la librería
+            if (typeof Twitch !== 'undefined' && !twitchEmbed.querySelector('iframe')) {
+                new Twitch.Embed('twitch-embed', {
+                    width: '100%',
+                    height: '100%',
+                    channel: channelName,
+                    layout: 'video',
+                    autoplay: true,
+                    muted: true,
+                    parent: ['impulsado.github.io', 'localhost']
+                });
+            }
+        }
+    }
+
+    // Verificar estado del stream al cargar
+    await checkIfLive();
+    
+    // Verificar cada 2 minutos si el estado cambió
+    setInterval(checkIfLive, 120000);
+}
