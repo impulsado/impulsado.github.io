@@ -1,131 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>rex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://impulsado.org/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="rex">
+  <meta property="og:description" content="Product engineering, systems, and selected work.">
+  <meta property="og:url" content="https://impulsado.org/">
+
+
   <link rel="shortcut icon" href="img/star.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <title>rex</title>
 </head>
 
 <body>
-  <div class="container">
-    <nav>
-      <ul>
-        <li id="about" class="nav-item underline">.\about</li>
-        <li id="projects" class="nav-item underline">./projects</li>
+  <header>
+    <h1>Impulsado</h1>
+
+    <p>(IT Infrastructure & Product Engineer) @ Codorníu</p>
+    <p>Computer Engineer (FIB | UPC) · AI · Linux · Networking</p>
+    <p><small><em>This website respects your context window.</em></small></p>
+  </header>
+
+  <main>
+    <section aria-labelledby="selected-work">
+      <h2 id="selected-work">Selected work</h2>
+
+      <article>
+        <h3>ISEGO</h3>
+        <p>A modular blockchain-based voting system with privacy-preserving zero-knowledge proofs (zk-SNARKs), built on Hyperledger Besu.
+        </p>
+        <p>
+          <a href="mailto:impulsado@protonmail.com?subject=ISEGO">
+            Contact me for details
+          </a>
+        </p>
+      </article>
+
+      <article>
+        <h3>Airplanes Information</h3>
+        <p>
+          An offline flight-information system using Bluetooth LE,
+          winner of the Vueling Challenge at HackUPC 2025.
+        </p>
+        <a href="https://devpost.com/software/airplanes-information">
+            See Devpost
+        </a>
+      </article>
+    </section>
+
+    <section aria-labelledby="code-and-references">
+        <h2 id="code-and-references">Code &amp; references</h2>
+        
+    <ul>
+        
+        <li>
+            <a href="https://github.com/impulsado/EternalFIB">EternalFIB</a>
+            — Computer Engineering notes and resources from UPC.
+        </li>
+        
+        <li>
+            <a href="https://github.com/impulsado/dotFiles">dotFiles</a>
+            — My Linux configuration files and an installer to set up a new machine.
+        </li>
+
+        <li>
+            <a href="https://github.com/impulsado/zeOS">zeOS</a>
+            — An academic project exploring linux's operating-system internals.
+        </li>
+
+        <li>
+            <a href="https://github.com/impulsado/wannaNotes">wannaNotes</a>
+            — Cybersecurity notes in Markdown, organized for Obsidian.
+        </li>
+
+        <li>
+            <a href="https://github.com/impulsado/personalDB">personalDB</a>
+            — An encrypted mobile app for storing and searching personal information.
+        </li>
       </ul>
-    </nav>
-    <main>
-      <h1>impulsado:~$ <span class="cursor">_</span></h1>
-      <table>
-        <tr>
-          <td>-rwxrw-rw-</td>
-          <td><a href="https://www.linkedin.com/in/paubruribes/" target="_blank" class="link underline"
-              style="color: #0e76a8;"><i class="fab fa-linkedin"></i> LinkedIn</a></td>
-        </tr>
-        <tr>
-          <td>-rwx---rw-</td>
-          <td><a href="https://www.youtube.com/@impulsado" target="_blank" class="link underline"
-              style="color: #c4302b;"><i class="fab fa-youtube"></i> YouTube</a></td>
-        </tr>
-        <tr>
-          <td>-rwxrwxr-x</td>
-          <td><a href="https://github.com/impulsado" target="_blank" class="link underline" style="color: #f0f0f0;"><i
-                class="fab fa-github"></i> GitHub</a></td>
-        </tr>
-      </table>
-    </main>
-  </div>
+    </section>
+  </main>
 
-  <!-- Window Contents -->
-  <div class="hidden">
-    <div id="about-content" class="powershell">
-      <div class="ps-header">Windows PowerShell</div>
-      <div class="ps-copyright">Copyright (C) Micronoft Corporation.</div>
-      <div class="ps-line">
-        <span class="ps-prompt">PS C:\Users\impulsado&gt;</span> <span class="ps-cmd">Get-Content .\about.txt</span>
-      </div>
-      <div class="ps-output">
-        <p>Name        : <span class="ps-value">impulsado</span></p>
-        <p>Location    : Barcelona, Spain</p>
-        <p>Education   : Computer Engineering @ UPC</p>
-        <p>Interests   : Networking, Cybersecurity</p>
-        <p>Philosophy  : Simplifying complexity</p>
-      </div>
-    </div>
+  <hr>
 
-    <div id="projects-content" class="linux-term">
-      <div class="term-line">
-        <span class="term-user">impu@zeOS</span>:<span class="term-path">~</span>$ ls -la ~/projects
-      </div>
-      <div class="term-output">
-        <div class="ls-header">
-          <span>total 20K</span>
-        </div>
-
-      <div class="ls-row">
-        <a href="https://github.com/impulsado/zeOS" target="_blank">
-          <span class="perm">drwxr-xr-x</span>
-          <span class="user">impulsado</span>
-          <span class="size">4.0K</span>
-          <span class="name">zeOS/</span>
-        </a>
-      </div>
-      <div class="ls-files">
-        <div class="file-item"><i class="devicon-c-plain"></i> <span class="file-c">kernel.c</span></div>
-        <div class="file-item"><i class="fas fa-microchip"></i> <span class="file-asm">boot.asm</span></div>
-      </div>
-
-      <div class="ls-row">
-        <a href="https://github.com/impulsado/personalDB" target="_blank">
-          <span class="perm">drwxr-xr-x</span>
-          <span class="user">impulsado</span>
-          <span class="size">2.1K</span>
-          <span class="name">personalDB/</span>
-        </a>
-      </div>
-      <div class="ls-files">
-        <div class="file-item"><i class="devicon-flutter-plain"></i> <span class="file-dart">app.dart</span></div>
-      </div>
-
-      <div class="ls-row">
-        <a href="https://github.com/impulsado/wannaNotes" target="_blank">
-          <span class="perm">drwxr-xr-x</span>
-          <span class="user">impulsado</span>
-          <span class="size">856</span>
-          <span class="name">wannaNotes/</span>
-        </a>
-      </div>
-      <div class="ls-files">
-        <div class="file-item"><i class="fab fa-markdown"></i> <span class="file-md">notes.md</span></div>
-        <div class="file-item"><i class="devicon-docker-plain"></i> <span class="file-md">Containerlab</span></div>
-      </div>
-
-      <div class="ls-row">
-        <a href="https://github.com/impulsado/eternalFIB" target="_blank">
-          <span class="perm">drwxr-xr-x</span>
-          <span class="user">impulsado</span>
-          <span class="size">12K</span>
-          <span class="name">eternalFIB/</span>
-        </a>
-      </div>
-      <div class="ls-files">
-        <div class="file-item"><i class="devicon-c-original"></i> <span class="file-c">os.c</span></div>
-        <div class="file-item"><i class="devicon-cplusplus-plain"></i> <span class="file-cpp">data.cpp</span></div>
-        <div class="file-item"><i class="devicon-java-plain"></i> <span class="file-java">Main.java</span></div>
-        <div class="file-item"><i class="devicon-postgresql-plain"></i> <span class="file-sql">database.sql</span></div>
-        <div class="file-item"><i class="fas fa-microchip"></i> <span class="file-asm">sys.asm</span></div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/winbox@0.2.82/dist/winbox.bundle.min.js"></script>
-  <script src="jss/main.js"></script>
+  <footer>
+    <p>
+      <a href="https://github.com/impulsado">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/paubruribes/">LinkedIn</a> ·
+      <a href="https://www.youtube.com/@impulsado">YouTube</a> ·
+      <a href="mailto:impulsado@protonmail.com">Email</a>
+    </p>
+  </footer>
 </body>
-
 </html>
